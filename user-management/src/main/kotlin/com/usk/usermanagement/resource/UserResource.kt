@@ -18,4 +18,9 @@ class UserResource(
     fun createUser(@RequestBody userDto : UserDto) : UserDto {
         return userService.craeteuser(userDto)
     }
+
+    @GetMapping
+    fun getUsers() : List<UserDto> {
+        return userService.getUsers()
+    }
 }

@@ -18,4 +18,11 @@ class UserServiceImpl(
         return UserDto(user.id, user.firstName, user.lastName, user.age)
     }
 
+    override fun getUsers(): List<UserDto> {
+        val users =  userRepository.findAll()
+        return users.map{
+            UserDto(it.id, it.firstName, it.lastName, it.age)
+        }
+    }
+
 }
