@@ -25,4 +25,24 @@ class UserServiceImpl(
         }
     }
 
+    override fun getUserById(userId: Int): UserDto {
+        val optionalUser = userRepository.findById(userId)
+        val user = optionalUser.get()
+        return UserDto(user.id, user.firstName, user.lastName, user.age)
+    }
+
+    override fun updateUser(userId: Int, userDto: UserDto) : UserDto {
+        val optionalUser = userRepository.findById(userId)
+        val user = optionalUser.get()
+        user.firstName = userDto.firstName
+        user.lastName = userDto.lastName
+        user.age = userDto.age
+        userRepository.save(user)
+        return UserDto(user.id, user.firstName, user.lastName, user.age)
+    }
+
+    override fun deleteUser(userId: Int) {
+        userRepository.deleteById(userId)
+    }
+
 }

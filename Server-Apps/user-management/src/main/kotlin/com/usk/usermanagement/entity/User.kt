@@ -10,7 +10,7 @@ data class User(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id : Int,
-    val firstName : String,
-    val lastName : String,
-    val age : Int
+    var firstName : String,
+    var lastName : String,
+    var age : Int
 )
