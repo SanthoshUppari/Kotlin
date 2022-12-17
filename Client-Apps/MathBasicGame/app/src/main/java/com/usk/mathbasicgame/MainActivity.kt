@@ -70,45 +70,20 @@ class MainActivity : AppCompatActivity() {
 
     fun getTemparature(){
 
-        val destinationService = ServiveBuilder.buidService(DestinationService::class.java)
-        val resultCall = destinationService.getTemparature()
+        val userClientApi = ServiveBuilder.getInstance().create(DestinationService::class.java).getTemparature()
+        userClientApi.enqueue( object : Callback<Destination>{
 
-        resultCall.enqueue(object: Callback<Destination>{
             override fun onResponse(call: Call<Destination>, response: Response<Destination>) {
-                if(response.isSuccessful){
-                    val destinations = response.body()!!
-                    tempButton.setText(destinations.data.get(0).temp)
+                if(response?.body() != null){
+                    tempButton.setText(response.body()!!.data.get(0).temp.toString())
                 }
             }
 
             override fun onFailure(call: Call<Destination>, t: Throwable) {
-                TODO("Not yet implemented")
+                tempButton.setText("Fail...")
             }
         })
 
-
-
-    }
-
-
-    fun getTemparatureOld(){
-
-        if (Build.VERSION.SDK_INT > 9) {
-            val policy = ThreadPolicy.Builder().permitAll().build()
-            StrictMode.setThreadPolicy(policy)
-        }
-
-        val client = OkHttpClient()
-
-        val request = Request.Builder()
-            .url("https://weatherbit-v1-mashape.p.rapidapi.com/current?lon=77.580643&lat=12.972442&lang=en")
-            .get()
-            .addHeader("X-RapidAPI-Key", "cc36d7ddfamsh554d72775a063c5p12457ejsne082b2ecdce0")
-            .addHeader("X-RapidAPI-Host", "weatherbit-v1-mashape.p.rapidapi.com")
-            .build()
-        val response = client.newCall(request).execute()
-        Log.d("Temp", "getTemparature: ${response.body().toString()}")
-        temparature = response.body().toString()
     }
 
 }

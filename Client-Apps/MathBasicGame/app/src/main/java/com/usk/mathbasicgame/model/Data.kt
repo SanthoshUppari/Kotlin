@@ -1,5 +1,5 @@
 package com.usk.mathbasicgame.model
 
 class Data {
-    var temp : Int = 0
+    var temp : Double = 0.0
 }
