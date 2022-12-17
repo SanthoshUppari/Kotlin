@@ -75,7 +75,7 @@ class MainActivity : AppCompatActivity() {
 
             override fun onResponse(call: Call<Destination>, response: Response<Destination>) {
                 if(response?.body() != null){
-                    tempButton.setText(response.body()!!.data.get(0).temp.toString())
+                    tempButton.setText(response.body()!!.data.get(0).temp.toString()+ " C")
                 }
             }
 
