@@ -26,7 +26,7 @@ class LoginActivity : AppCompatActivity() {
         login.setOnClickListener {
             var user = UserRepo(applicationContext).getUser(username.text.toString(), password.text.toString())
             if(user == null){
-                Toast.makeText(applicationContext, "Invalid credetials, Login failed." , Toast.LENGTH_LONG)
+                Toast.makeText(applicationContext, "Invalid credetials, Login failed." , Toast.LENGTH_LONG).show()
             } else {
                 var intent = Intent(this@LoginActivity, DBActivity::class.java)
                 intent.putExtra("username" , username.text.toString())
