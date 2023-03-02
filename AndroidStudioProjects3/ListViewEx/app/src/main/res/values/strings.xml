@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">ListViewEx</string>
+
+    <string-array name="names">
+        <item>India</item>
+        <item>Australia</item>
+        <item>USA</item>
+        <item>Canada</item>
+    </string-array>
+</resources>
