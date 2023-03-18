@@ -1,3 +1,0 @@
-From the menu bar, select View > Tool Windows > App Inspection.
-Select the Database Inspector tab.
-Select the running app process from the menu.
